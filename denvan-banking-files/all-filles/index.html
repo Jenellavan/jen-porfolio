@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanessa Awo | Senior DevOps Engineer & Site Reliability Specialist</title>
+    <meta name="description" content="Senior DevOps Engineer with 6+ years experience in AWS, Azure, Kubernetes, and cloud infrastructure automation">
+    <meta name="keywords" content="DevOps, AWS, Azure, Kubernetes, Site Reliability Engineer, Cloud Engineer, Terraform, CI/CD">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --accent: #ff0080;
+            --bg-dark: #0a0e1a;
+            --bg-darker: #050810;
+            --text-light: #e0e6ff;
+            --text-dim: #8892b0;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border: rgba(0, 255, 136, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -150px;
+            left: -150px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--text-dim);
+            color: var(--text-dim);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .expertise-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .expertise-description {
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 3px;
+            color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .project-client {
+            color: var(--secondary);
+        }
+
+        .project-date {
+            color: var(--text-dim);
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-achievements {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-achievements li {
+            color: var(--text-dim);
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .project-achievements li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--secondary);
+            border-radius: 3px;
+            color: var(--secondary);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .timeline-marker {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--bg-darker), 0 0 0 6px var(--primary);
+        }
+
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .timeline-company {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .cert-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.4;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            min-width: 200px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .contact-value {
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .contact-value:hover {
+            color: var(--secondary);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">VANESSA.AWO</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">&lt;status: open_to_opportunities /&gt;</div>
+                <h1 class="hero-title">Vanessa Awo</h1>
+                <p class="hero-subtitle">Senior DevOps Engineer | AWS & Azure Specialist | Site Reliability Specialist</p>
+                <p class="hero-description">
+                    Highly experienced DevOps Engineer with 6+ years of expertise designing, automating, 
+                    and securing large-scale cloud infrastructure across AWS GovCloud, Azure, and hybrid environments. 
+                    Proven track record delivering 99.9% uptime, 45% cost reduction, and modernizing mission-critical 
+                    platforms for Financial and Government clients.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="/cdn-cgi/l/email-protection#e7b1868982949486ded4d0d4d7a7808a868e8bc984888a" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">Cost Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Faster Lead Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">// Core Competencies</div>
+                <h2 class="section-title">Expertise</h2>
+                <p class="section-subtitle">
+                    Deep technical expertise across cloud platforms, DevOps automation, and security compliance
+                </p>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">☁️</div>
+                    <h3 class="expertise-title">Cloud Architecture & Migration</h3>
+                    <p class="expertise-description">
+                        Expert in designing multi-AZ, auto-healing cloud infrastructure across AWS GovCloud 
+                        and Azure Government. Delivered secure architectures achieving 99.95% SLA with automated 
+                        disaster recovery and 45% operational cost reduction.
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">AWS GovCloud</span>
+                        <span class="skill-tag">Azure Gov</span>
+                        <span class="skill-tag">EC2</span>
+                        <span class="skill-tag">S3</span>
+                        <span class="skill-tag">VPC</span>
+                        <span class="skill-tag">Route53</span>
+                        <span class="skill-tag">RDS</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔄</div>
+                    <h3 class="expertise-title">CI/CD & Infrastructure Automation</h3>
+                    <p class="expertise-description">
+                        Built end-to-end CI/CD pipelines enabling deployment frequency increase from 3 to 30 
+                        deployments per month with 60% lead time reduction. Automated infrastructure provisioning 
+                        reducing manual build time by 80%.
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">GitLab CI</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">CircleCI</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">🏗️</div>
+                    <h3 class="expertise-title">Infrastructure as Code</h3>
+                    <p class="expertise-description">
+                        Automated GovCloud and Azure provisioning using Terraform, CloudFormation, and ARM 
+                        templates. Implemented configuration management and OS hardening with Ansible, Chef, 
+                        and Puppet following CIS benchmarks and STIG baselines.
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">CloudFormation</span>
+                        <span class="skill-tag">ARM Templates</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Chef</span>
+                        <span class="skill-tag">Puppet</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">📦</div>
+                    <h3 class="expertise-title">Container Orchestration</h3>
+                    <p class="expertise-description">
+                        Architected and supported Kubernetes platforms (EKS, AKS, ECS/Fargate) with Helm, 
+                        service mesh integration, and GitOps workflows. Achieved zero-downtime deployments 
+                        with automatic rollback capabilities.
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">EKS</span>
+                        <span class="skill-tag">AKS</span>
+                        <span class="skill-tag">Helm</span>
+                        <span class="skill-tag">ECS/Fargate</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔒</div>
+                    <h3 class="expertise-title">Security & Compliance Automation</h3>
+                    <p class="expertise-description">
+                        Implemented security-as-code frameworks integrating SAST, DAST, container scanning, 
+                        and IaC scanners. Embedded Federal cybersecurity controls ensuring FedRAMP Moderate, 
+                        NIST 800-53, HIPAA, and DoD IL4/IL5 compliance with 40%+ vulnerability reduction.
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">OWASP ZAP</span>
+                        <span class="skill-tag">Snyk</span>
+                        <span class="skill-tag">Checkov</span>
+                        <span class="skill-tag">Prisma Cloud</span>
+                        <span class="skill-tag">Vault</span>
+                    </div>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">📊</div>
+                    <h3 class="expertise-title">Observability & Monitoring</h3>
+                    <p class="expertise-description">
+                        Established comprehensive observability platforms using ELK, Prometheus, Grafana, 
+                        and Splunk. Built real-time monitoring enabling 40% faster anomaly detection with 
+                        50% reduction in mean-time-to-response (MTTR).
+                    </p>
+                    <div class="expertise-skills">
+                        <span class="skill-tag">ELK Stack</span>
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">CloudWatch</span>
+                        <span class="skill-tag">Azure Monitor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">// Infrastructure Portfolio</div>
+                <h2 class="section-title">DevOps & SRE Projects</h2>
+                <p class="section-subtitle">
+                    Mission-critical infrastructure, automation, and platform reliability engineering
+                </p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: AWS GovCloud Infrastructure Modernization -->
+                <div class="project-card">
+                    <div class="project-image">🏛️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">AWS GovCloud Infrastructure Modernization</h3>
+                        <div class="project-meta">
+                            <span class="project-client">Client: Deutsche Bank | Homeland Security</span>
+                            <span class="project-date">Oct 2022 – Present</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Designed multi-AZ, auto-healing AWS GovCloud infrastructure achieving 99.95% SLA across production workloads</li>
+                            <li>Automated infrastructure provisioning with Terraform reducing manual deployment time by 80%</li>
+                            <li>Implemented Kubernetes GitOps workflows with ArgoCD and Helm for zero-downtime deployments</li>
+                            <li>Built comprehensive CI/CD pipelines with integrated security scanning (Snyk, Checkov, Trivy)</li>
+                            <li>Established real-time observability stack (EFK + Grafana) enabling 40% faster anomaly detection</li>
+                            <li>Spearheaded DR automation ensuring 30-minute RPO and sub-4-hour RTO compliance</li>
+                            <li>Embedded Federal cybersecurity controls ensuring FedRAMP Moderate and NIST 800-53 compliance</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">AWS GovCloud</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Kubernetes EKS</span>
+                            <span class="tech-tag">ArgoCD</span>
+                            <span class="tech-tag">Helm</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">GitLab CI</span>
+                            <span class="tech-tag">ELK Stack</span>
+                            <span class="tech-tag">Prometheus</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Snyk</span>
+                            <span class="tech-tag">Ansible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Multi-Cloud Kubernetes Platform -->
+                <div class="project-card">
+                    <div class="project-image">☁️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise Multi-Cloud Kubernetes Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-client">Multi-Cloud Infrastructure</span>
+                            <span class="project-date">2023 – 2024</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Architected multi-cloud Kubernetes platform spanning AWS EKS, Azure AKS, and GCP GKE</li>
+                            <li>Implemented service mesh (Istio) for cross-cluster communication and zero-trust networking</li>
+                            <li>Automated cluster provisioning and lifecycle management using Terraform and Cluster API</li>
+                            <li>Configured centralized monitoring with Prometheus federation across all clusters</li>
+                            <li>Established GitOps workflows with FluxCD for declarative infrastructure management</li>
+                            <li>Implemented Pod Security Policies, Network Policies, and RBAC for enhanced security</li>
+                            <li>Reduced operational overhead by 60% through automation and self-healing capabilities</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">AWS EKS</span>
+                            <span class="tech-tag">Azure AKS</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Istio</span>
+                            <span class="tech-tag">FluxCD</span>
+                            <span class="tech-tag">Helm</span>
+                            <span class="tech-tag">Prometheus</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Cert-Manager</span>
+                            <span class="tech-tag">External-DNS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: HIPAA-Compliant Infrastructure Pipeline -->
+                <div class="project-card">
+                    <div class="project-image">🏥</div>
+                    <div class="project-content">
+                        <h3 class="project-title">HIPAA-Compliant Cloud Infrastructure</h3>
+                        <div class="project-meta">
+                            <span class="project-client">Client: SiriusPoint | CMS Healthcare</span>
+                            <span class="project-date">Oct 2019 – Oct 2022</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Built HIPAA-compliant AWS infrastructure with automated compliance validation and reporting</li>
+                            <li>Implemented comprehensive security-as-code with SAST, DAST, and container scanning in CI/CD</li>
+                            <li>Automated EKS cluster deployments with Terraform, Helm, and service mesh integration</li>
+                            <li>Deployed automated container hardening pipeline reducing vulnerabilities by 50%</li>
+                            <li>Configured KMS encryption, secrets management with Vault, and automated key rotation</li>
+                            <li>Established centralized logging with ELK Stack and Splunk for compliance auditing</li>
+                            <li>Implemented infrastructure monitoring with CloudWatch, custom metrics, and automated alerting</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Kubernetes EKS</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Chef</span>
+                            <span class="tech-tag">HashiCorp Vault</span>
+                            <span class="tech-tag">ELK Stack</span>
+                            <span class="tech-tag">Splunk</span>
+                            <span class="tech-tag">SonarQube</span>
+                            <span class="tech-tag">Prisma Cloud</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: CI/CD Pipeline Modernization -->
+                <div class="project-card">
+                    <div class="project-image">🔄</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise CI/CD Pipeline Transformation</h3>
+                        <div class="project-meta">
+                            <span class="project-client">DevOps Modernization Initiative</span>
+                            <span class="project-date">2022 – 2023</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Modernized legacy CI/CD pipelines increasing deployment frequency from 3 to 30 per month</li>
+                            <li>Implemented GitOps-based deployment workflows with automated rollback capabilities</li>
+                            <li>Integrated comprehensive security scanning at every pipeline stage (SAST, DAST, SCA, IaC)</li>
+                            <li>Built automated testing framework with unit, integration, and smoke tests</li>
+                            <li>Configured blue/green and canary deployment strategies for zero-downtime releases</li>
+                            <li>Established artifact management with Artifactory and container registry governance</li>
+                            <li>Reduced deployment lead time by 60% through automation and parallelization</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">GitLab CI</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">ArgoCD</span>
+                            <span class="tech-tag">Spinnaker</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Snyk</span>
+                            <span class="tech-tag">SonarQube</span>
+                            <span class="tech-tag">Artifactory</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Observability & SRE Platform -->
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise Observability & SRE Platform</h3>
+                        <div class="project-meta">
+                            <span class="project-client">Site Reliability Engineering</span>
+                            <span class="project-date">2021 – 2022</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Architected comprehensive observability platform serving 500+ microservices</li>
+                            <li>Deployed Prometheus federation with long-term storage using Thanos and Cortex</li>
+                            <li>Built 50+ Grafana dashboards for infrastructure, application, and business metrics</li>
+                            <li>Implemented distributed tracing with Jaeger and OpenTelemetry instrumentation</li>
+                            <li>Established SLO/SLI framework with automated error budget tracking and alerting</li>
+                            <li>Configured intelligent alerting reducing alert fatigue by 70% through deduplication</li>
+                            <li>Reduced MTTD by 70% and MTTR by 60% through proactive monitoring and automation</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Prometheus</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Thanos</span>
+                            <span class="tech-tag">Jaeger</span>
+                            <span class="tech-tag">OpenTelemetry</span>
+                            <span class="tech-tag">ELK Stack</span>
+                            <span class="tech-tag">Loki</span>
+                            <span class="tech-tag">PagerDuty</span>
+                            <span class="tech-tag">Datadog</span>
+                            <span class="tech-tag">CloudWatch</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Infrastructure Cost Optimization -->
+                <div class="project-card">
+                    <div class="project-image">💰</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cloud Cost Optimization & FinOps</h3>
+                        <div class="project-meta">
+                            <span class="project-client">Infrastructure Optimization</span>
+                            <span class="project-date">2022 – 2023</span>
+                        </div>
+                        <ul class="project-achievements">
+                            <li>Implemented FinOps practices achieving 45% reduction in cloud infrastructure costs</li>
+                            <li>Automated resource rightsizing using custom monitoring and ML-based recommendations</li>
+                            <li>Configured auto-scaling policies optimizing resource utilization across compute and storage</li>
+                            <li>Implemented Spot/Reserved Instance strategies reducing EC2 costs by 60%</li>
+                            <li>Built cost allocation and chargeback system with department-level visibility</li>
+                            <li>Established automated cleanup of unused resources (EBS volumes, snapshots, IPs)</li>
+                            <li>Created cost anomaly detection with automated alerts and remediation workflows</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">AWS Cost Explorer</span>
+                            <span class="tech-tag">CloudHealth</span>
+                            <span class="tech-tag">Kubernetes HPA</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Lambda</span>
+                            <span class="tech-tag">CloudWatch</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Spot Instances</span>
+                            <span class="tech-tag">Reserved Instances</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">// Career Journey</div>
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">
+                    Professional journey delivering secure, scalable cloud infrastructure
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Oct 2022 – Present</div>
+                        <h3 class="timeline-title">Senior DevOps Engineer</h3>
+                        <div class="timeline-company">Deutsche Bank | Homeland Security Digital Modernization</div>
+                        <p class="timeline-description">
+                            Leading DevOps and cloud infrastructure modernization for critical government systems 
+                            on AWS GovCloud. Architecting secure, compliant infrastructure achieving 99.95% SLA 
+                            with automated security scanning, GitOps workflows, and comprehensive observability.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Oct 2019 – Oct 2022</div>
+                        <h3 class="timeline-title">Cloud DevOps Engineer</h3>
+                        <div class="timeline-company">SiriusPoint | Centers for Medicare & Medicaid Services (CMS)</div>
+                        <p class="timeline-description">
+                            Built and secured HIPAA-compliant AWS data analytics pipelines. Integrated automated 
+                            security scanning into CI/CD pipelines, implemented container hardening programs, 
+                            and automated EKS deployments.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">// Professional Credentials</div>
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">
+                    Industry-recognized certifications validating expertise
+                </p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">☁️</div>
+                    <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">⚡</div>
+                    <div class="cert-name">Microsoft Certified: Azure DevOps Engineer Expert</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🔒</div>
+                    <div class="cert-name">CompTIA Security+</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">📦</div>
+                    <div class="cert-name">Certified Kubernetes Administrator (CKA)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="section-header">
+                    <div class="section-tag">// Let's Connect</div>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">
+                        Open to new opportunities and consulting engagements
+                    </p>
+                </div>
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-label">Email</div>
+                        <a href="/cdn-cgi/l/email-protection#b0e6d1ded5c3c3d18983878380f0d7ddd1d9dc9ed3dfdd" class="contact-value"><span class="__cf_email__" data-cfemail="81d7e0efe4f2f2e0b8b2b6b2b1c1e6ece0e8edafe2eeec">[email&#160;protected]</span></a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-label">Phone</div>
+                        <a href="tel:+12024159373" class="contact-value">+1 (202) 415-9373</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-label">LinkedIn</div>
+                        <a href="https://www.linkedin.com/in/vanessa11/" target="_blank" class="contact-value">linkedin.com/in/vanessa11</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-label">Location</div>
+                        <span class="contact-value">USA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>© 2025 Vanessa Awo. All rights reserved.</div>
+            <di
