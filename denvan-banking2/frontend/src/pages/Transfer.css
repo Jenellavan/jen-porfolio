@@ -1,0 +1,103 @@
+.transfer-page {
+  min-height: calc(100vh - 80px);
+  padding: 40px 0;
+}
+
+.transfer-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.transfer-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.transfer-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.transfer-subtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.balance-info {
+  background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+  color: white;
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  font-size: 18px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 12px rgba(0, 48, 87, 0.2);
+}
+
+.balance-info strong {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.transfer-form {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.amount-input-wrapper {
+  position: relative;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.amount-input {
+  padding-left: 40px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.transfer-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.transfer-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .transfer-page {
+    padding: 20px 0;
+  }
+
+  .transfer-form {
+    padding: 24px;
+  }
+
+  .transfer-title {
+    font-size: 24px;
+  }
+
+  .balance-info {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
